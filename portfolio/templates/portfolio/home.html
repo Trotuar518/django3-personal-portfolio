@@ -1,0 +1,40 @@
+{% extends "portfolio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-13">
+    <img src="{% static 'xui/WIN_20220217_00_07_12_Pro.jpg' %}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">Тут должна быть какая-то информация обо мне)😊</h1>
+  </div>
+</div>
+
+<h2 class="mt-5">My projects:</h2>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if project.url %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}"  width="500" height="300" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ project.image.url }}" class="img-fluid mb-1">
+    {% endif %}
+    <h5>{{ project.title }}</h1>
+    <p>{{ project.discription }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
